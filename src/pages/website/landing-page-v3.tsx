@@ -1296,29 +1296,69 @@ const PricingSection = () => (
 );
 
 const FooterCTA = () => (
-  <section className="py-24 bg-violet-600 relative overflow-hidden">
-    <div className="absolute inset-0 bg-violet-800/20 pattern-dots"></div>
-    <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
-      <div className="absolute top-[-50%] left-[-20%] w-[800px] h-[800px] bg-fuchsia-400/20 rounded-full blur-[120px]"></div>
-      <div className="absolute bottom-[-50%] right-[-20%] w-[800px] h-[800px] bg-indigo-400/20 rounded-full blur-[120px]"></div>
-    </div>
+  <section className="py-32 bg-[#0B0F19] relative overflow-hidden group">
+    {/* 1. Background Grid (Subtle Tech Feel) */}
+    <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] opacity-20"></div>
+
+    {/* 2. The Spotlight (Top Center) */}
+    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-violet-600/20 rounded-full blur-[120px] pointer-events-none"></div>
+    <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-fuchsia-600/10 rounded-full blur-[120px] pointer-events-none"></div>
 
     <div className="max-w-4xl mx-auto text-center px-6 relative z-10">
-      <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
-        Your New Best Employee is Ready to Start.
+      {/* 3. Small Badge */}
+      <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800/50 border border-slate-700 text-slate-300 text-xs font-medium mb-8 backdrop-blur-md">
+        <Sparkles className="w-3 h-3 text-violet-400" />
+        <span className="bg-gradient-to-r from-violet-200 to-fuchsia-200 bg-clip-text text-transparent font-bold">
+          Artificial Intelligence
+        </span>
+      </div>
+
+      {/* 4. Headline with Gradient */}
+      <h2 className="text-4xl md:text-6xl font-bold text-white mb-8 tracking-tight leading-tight">
+        Ready to hire your new <br />
+        <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-fuchsia-400 to-white animate-gradient-x">
+          Best Employee?
+        </span>
       </h2>
-      <p className="text-violet-100 text-lg mb-10">
-        Join 500+ Singapore businesses automating their customer conversations.
+
+      <p className="text-slate-400 text-lg md:text-xl mb-12 max-w-2xl mx-auto leading-relaxed">
+        Join 500+ Singapore businesses automating their revenue.{" "}
+        <br className="hidden md:block" />
+        Setup takes 24 hours. Results are instant.
       </p>
 
-      <div className="flex flex-col items-center gap-4">
-        <button className="py-4 px-10 bg-white text-violet-900 font-bold text-lg rounded-full hover:bg-slate-50 transition-all shadow-xl hover:-translate-y-1 flex items-center gap-2">
-          Start Your Free Trial
-          <ArrowRight className="w-5 h-5" />
+      {/* 5. Premium Buttons */}
+      <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+        {/* Primary: White Glow Button */}
+        <button className="relative group/btn py-4 px-10 bg-white text-slate-950 font-bold text-lg rounded-full hover:bg-slate-100 transition-all shadow-[0_0_40px_-10px_rgba(255,255,255,0.3)] hover:shadow-[0_0_60px_-15px_rgba(255,255,255,0.5)] hover:-translate-y-1 flex items-center gap-2">
+          <span className="relative z-10">Start Free Trial</span>
+          <ArrowRight className="w-5 h-5 relative z-10 group-hover/btn:translate-x-1 transition-transform" />
         </button>
-        <p className="text-violet-200 text-sm">
-          No credit card required. Setup in minutes.
+
+        {/* Secondary: Glass Dark Button */}
+        <button className="py-4 px-10 bg-white/5 text-white font-medium text-lg rounded-full border border-white/10 hover:bg-white/10 transition-all backdrop-blur-sm flex items-center gap-2 hover:border-white/20">
+          View Pricing
+        </button>
+      </div>
+
+      {/* 6. Trust Signal */}
+      <div className="mt-12 pt-12 border-t border-slate-800/50 flex flex-col items-center">
+        <p className="text-slate-500 text-xs font-medium uppercase tracking-widest mb-4">
+          Trusted By Industry Leaders
         </p>
+        <div className="flex gap-2">
+          {[...Array(5)].map((_, i) => (
+            <div
+              key={i}
+              className="w-8 h-8 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-[10px] text-slate-400 font-bold ring-2 ring-[#0B0F19]"
+            >
+              {String.fromCharCode(65 + i)}
+            </div>
+          ))}
+          <div className="h-8 flex items-center px-3 text-sm text-slate-400 font-medium">
+            +495 others
+          </div>
+        </div>
       </div>
     </div>
   </section>
