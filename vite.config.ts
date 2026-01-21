@@ -5,5 +5,5 @@ import tailwindcss from "@tailwindcss/vite";
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  base: "/demo", // e.g., "/my-portfolio/"
+  base: "/exabloom-landing-page-v3", // e.g., "/my-portfolio/"
 });
