@@ -722,8 +722,8 @@ export const StepSection = () => (
           </div>
         </div>
 
-        {/* --- STEP 2: FRICTIONLESS ACTION --- */}
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        {/* --- STEP 2: FRICTIONLESS ACTION (UPDATED VISUAL) --- */}
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center">
           <div className="order-1">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-100 text-teal-700 text-xs font-bold mb-6">
               <Zap className="w-3 h-3" />
@@ -750,96 +750,129 @@ export const StepSection = () => (
             </ul>
           </div>
 
-          <div className="order-2 relative group">
-            <div className="absolute -inset-4 bg-gradient-to-tr from-teal-100 to-emerald-100 rounded-[2.5rem] blur-2xl opacity-50 group-hover:opacity-100 transition duration-1000"></div>
+          {/* RIGHT: UPDATED VISUALIZATION */}
+          <div className="order-2 relative h-[550px] w-full flex items-center justify-center">
+            {/* Background Glow */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-teal-100/40 rounded-full blur-[80px] -z-10"></div>
 
-            {/* The Container - Split clearly into two */}
-            <div className="grid grid-cols-2 gap-4 relative">
-              {/* Visual Connector Arrow */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 bg-white p-2 rounded-full shadow-lg border border-slate-100">
-                <ArrowRight className="w-5 h-5 text-teal-600 animate-pulse" />
+            {/* 1. The Calendar (Positioned Behind, Tilted Right) */}
+            <div className="absolute right-0 md:right-8 lg:-right-4 top-1/2 -translate-y-1/2 w-[300px] h-[420px] bg-white rounded-xl border border-slate-200 shadow-xl overflow-hidden flex flex-col transform rotate-6 z-10 transition-transform hover:rotate-0 duration-500">
+              {/* Calendar Header */}
+              <div className="h-10 border-b border-slate-100 flex items-center px-4 gap-2 bg-slate-50">
+                <div className="flex gap-1.5">
+                  <div className="w-2.5 h-2.5 rounded-full bg-slate-300"></div>
+                  <div className="w-2.5 h-2.5 rounded-full bg-slate-300"></div>
+                </div>
+                <div className="text-[10px] text-slate-500 font-bold ml-2">
+                  Google Calendar
+                </div>
               </div>
 
-              {/* LEFT: Phone UI */}
-              <div className="bg-white rounded-[2rem] border-[6px] border-slate-900 overflow-hidden shadow-xl h-[340px] relative">
-                {/* WhatsApp Header */}
-                <div className="bg-[#008069] h-12 flex items-center px-3 gap-2">
-                  <ArrowRight className="w-4 h-4 text-white rotate-180" />
-                  <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center text-[8px] font-bold text-[#008069]">
-                    EB
-                  </div>
-                  <div className="flex-1 text-white text-[10px] font-bold">
-                    Exabloom AI
-                  </div>
-                  <Video className="w-3 h-3 text-white" />
-                  <Phone className="w-3 h-3 text-white" />
-                </div>
-                {/* Chat Area */}
-                <div className="bg-[#EFEAE2] h-full p-3 space-y-3">
-                  <div className="bg-white p-2 rounded-lg rounded-tl-none shadow-sm text-[10px] text-slate-800 max-w-[90%]">
-                    I checked the schedule. We have a slot on{" "}
-                    <strong>Thursday at 3 PM</strong>.
-                  </div>
-                  <div className="bg-[#d9fdd3] p-2 rounded-lg rounded-tr-none shadow-sm text-[10px] text-slate-800 self-end ml-auto max-w-[80%]">
-                    Okay, book that slot!
-                  </div>
-                  <div className="flex justify-center my-2">
-                    <span className="text-[8px] font-bold text-slate-500 bg-slate-200/50 px-2 py-0.5 rounded-full">
-                      Creating Booking...
+              {/* Calendar Grid */}
+              <div className="flex-1 p-4 relative bg-white">
+                <div className="grid grid-cols-1 gap-8">
+                  {/* 2 PM Slot */}
+                  <div className="flex gap-3">
+                    <span className="text-[10px] text-slate-400 w-8 pt-1 text-right">
+                      2 PM
                     </span>
+                    <div className="flex-1 h-14 border-t border-slate-100"></div>
                   </div>
-                </div>
-              </div>
 
-              {/* RIGHT: Desktop Calendar UI */}
-              <div className="bg-white rounded-xl border border-slate-200 shadow-xl overflow-hidden h-[340px] flex flex-col relative -mt-6 mb-6 rotate-1">
-                {/* Calendar Header */}
-                <div className="h-8 border-b border-slate-100 flex items-center px-3 gap-2 bg-slate-50">
-                  <div className="flex gap-1">
-                    <div className="w-2 h-2 rounded-full bg-slate-300"></div>
-                    <div className="w-2 h-2 rounded-full bg-slate-300"></div>
-                  </div>
-                  <div className="text-[10px] text-slate-500 font-bold ml-2">
-                    Google Calendar
-                  </div>
-                </div>
-
-                {/* Calendar Grid */}
-                <div className="flex-1 p-3 relative bg-white">
-                  <div className="grid grid-cols-1 gap-6">
-                    {/* 2 PM Slot */}
-                    <div className="flex gap-2">
-                      <span className="text-[9px] text-slate-400 w-6 pt-1">
-                        2 PM
-                      </span>
-                      <div className="flex-1 h-12 border-t border-slate-100"></div>
-                    </div>
-
-                    {/* 3 PM Slot - THE HIGHLIGHT */}
-                    <div className="flex gap-2 relative">
-                      <span className="text-[9px] text-slate-900 font-bold w-6 pt-1">
-                        3 PM
-                      </span>
-                      <div className="flex-1 h-14 border-t border-slate-100 relative">
-                        <div className="absolute top-1 left-0 right-0 bg-blue-500 rounded px-2 py-1.5 shadow-md shadow-blue-200 border-l-4 border-blue-700 animate-in fade-in zoom-in duration-700">
-                          <div className="text-[9px] font-bold text-white">
-                            Trial Class: Math
-                          </div>
-                          <div className="text-[8px] text-blue-100 flex items-center gap-1 mt-0.5">
-                            <div className="w-1 h-1 rounded-full bg-green-400"></div>{" "}
-                            Confirmed
-                          </div>
+                  {/* 3 PM Slot - THE HIGHLIGHT */}
+                  <div className="flex gap-3 relative">
+                    <span className="text-[10px] text-slate-900 font-bold w-8 pt-1 text-right">
+                      3 PM
+                    </span>
+                    <div className="flex-1 h-16 border-t border-slate-100 relative">
+                      <div className="absolute top-2 left-0 right-0 bg-blue-500 rounded px-3 py-2 shadow-lg shadow-blue-200 border-l-4 border-blue-700 animate-in zoom-in duration-700 delay-300">
+                        <div className="text-[10px] font-bold text-white">
+                          Trial Class: Math
+                        </div>
+                        <div className="text-[9px] text-blue-100 flex items-center gap-1 mt-1">
+                          <div className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></div>{" "}
+                          Confirmed
                         </div>
                       </div>
                     </div>
+                  </div>
 
-                    {/* 4 PM Slot */}
-                    <div className="flex gap-2">
-                      <span className="text-[9px] text-slate-400 w-6 pt-1">
-                        4 PM
+                  {/* 4 PM Slot */}
+                  <div className="flex gap-3">
+                    <span className="text-[10px] text-slate-400 w-8 pt-1 text-right">
+                      4 PM
+                    </span>
+                    <div className="flex-1 h-14 border-t border-slate-100"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* 2. The Connector (Floating Arrow) */}
+            <div className="absolute z-30 bg-white p-3 rounded-full shadow-lg border border-teal-100 animate-bounce">
+              <ArrowRight className="w-5 h-5 text-teal-600" />
+            </div>
+
+            {/* 3. The Phone (Foreground, Tilted Left - Matches Step 1 Dimensions) */}
+            <div className="absolute left-0 md:left-8 lg:-left-4 top-1/2 -translate-y-1/2 bg-white border-[6px] border-slate-800 rounded-[2.5rem] shadow-2xl overflow-hidden h-[480px] w-[280px] flex flex-col z-20 transform -rotate-3 hover:rotate-0 transition-transform duration-500 ring-1 ring-black/5">
+              {/* WhatsApp Header */}
+              <div className="bg-[#008069] h-14 shrink-0 flex items-center px-4 gap-3 text-white shadow-sm">
+                <ArrowRight className="w-4 h-4 rotate-180" />
+                <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center font-bold text-xs">
+                  EB
+                </div>
+                <div className="flex-1">
+                  <div className="text-[11px] font-bold">Exabloom AI</div>
+                  <div className="text-[9px] opacity-80">Business Account</div>
+                </div>
+              </div>
+
+              {/* Chat Area */}
+              <div className="flex-1 bg-[#EFEAE2] p-3 space-y-4 relative">
+                <div className="absolute inset-0 opacity-[0.4] bg-[url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png')] bg-repeat z-0 mix-blend-multiply"></div>
+
+                {/* Message 1 */}
+                <div className="relative z-10 flex justify-start">
+                  <div className="bg-white p-2.5 rounded-lg rounded-tl-none shadow-sm text-[11px] leading-snug text-slate-800 max-w-[85%]">
+                    <span className="block text-slate-900 font-bold mb-1">
+                      Checking schedule... 🗓️
+                    </span>
+                    Good news! We have a slot this{" "}
+                    <strong>Thursday at 3 PM</strong>. Shall I book it?
+                    <span className="text-[9px] text-slate-400 block text-right mt-1">
+                      10:45 AM
+                    </span>
+                  </div>
+                </div>
+
+                {/* Message 2 */}
+                <div className="relative z-10 flex justify-end">
+                  <div className="bg-[#d9fdd3] p-2.5 rounded-lg rounded-tr-none shadow-sm text-[11px] leading-snug text-slate-800 max-w-[85%]">
+                    Yes please!
+                    <div className="flex items-center justify-end gap-1 mt-1">
+                      <span className="text-[9px] text-slate-500">
+                        10:46 AM
                       </span>
-                      <div className="flex-1 h-12 border-t border-slate-100"></div>
+                      <CheckCheck className="w-3 h-3 text-blue-500" />
                     </div>
+                  </div>
+                </div>
+
+                {/* System Message */}
+                <div className="relative z-10 flex justify-center py-2">
+                  <span className="text-[9px] font-bold text-slate-500 bg-slate-200/60 px-2 py-0.5 rounded shadow-sm border border-slate-300/50 flex items-center gap-1">
+                    <Zap className="w-2.5 h-2.5 text-orange-500 fill-orange-500" />
+                    Booking Created
+                  </span>
+                </div>
+
+                {/* Message 3 */}
+                <div className="relative z-10 flex justify-start">
+                  <div className="bg-white p-2.5 rounded-lg rounded-tl-none shadow-sm text-[11px] leading-snug text-slate-800 max-w-[85%]">
+                    Done! You will receive a Google Calendar invite shortly.
+                    <span className="text-[9px] text-slate-400 block text-right mt-1">
+                      10:46 AM
+                    </span>
                   </div>
                 </div>
               </div>
