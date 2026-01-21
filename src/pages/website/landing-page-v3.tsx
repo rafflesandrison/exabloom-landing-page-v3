@@ -394,7 +394,7 @@ const SmartInboxSimulation = () => {
     name: string;
     msg: string;
   }) => (
-    <div className="p-4 rounded-xl border border-slate-100 bg-slate-50 flex items-center gap-3 opacity-50 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0">
+    <div className="p-3 md:p-4 rounded-xl border border-slate-100 bg-slate-50 flex items-center gap-3 opacity-50 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0">
       <div className="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center text-[10px] font-bold text-slate-500 shrink-0">
         {initial}
       </div>
@@ -405,16 +405,20 @@ const SmartInboxSimulation = () => {
         </div>
         <div className="text-[11px] text-slate-600 truncate">{msg}</div>
       </div>
-      <div className="shrink-0">
+      <div className="shrink-0 hidden sm:block">
         <span className="flex items-center gap-1 text-emerald-600 text-[10px] font-medium bg-emerald-50 px-2 py-1 rounded-full border border-emerald-100">
-          <Check className="w-3 h-3" /> Auto-Resolved
+          <Check className="w-3 h-3" /> Resolved
         </span>
+      </div>
+      <div className="shrink-0 sm:hidden">
+        <Check className="w-4 h-4 text-emerald-500" />
       </div>
     </div>
   );
 
   return (
-    <GlassCard className="p-0 overflow-hidden h-[450px] flex flex-col">
+    // Changed height to be responsive (shorter on mobile)
+    <GlassCard className="p-0 overflow-hidden h-[380px] md:h-[450px] flex flex-col w-full">
       <div className="bg-slate-50 border-b border-slate-100 p-4 flex items-center justify-between shrink-0">
         <div className="flex items-center gap-2">
           <div className="relative">
@@ -426,10 +430,12 @@ const SmartInboxSimulation = () => {
           </span>
         </div>
         <div className="text-[10px] font-medium text-slate-500 bg-white px-2 py-1 rounded border border-slate-200 shadow-sm">
-          3 Auto-Resolved • 1 Action Item
+          3 Auto-Resolved • 1 Action
         </div>
       </div>
-      <div className="p-4 pb-8 space-y-3 flex-1 overflow-y-auto flex flex-col justify-center">
+
+      {/* Added more padding (p-4) to ensure shadows inside don't get clipped */}
+      <div className="p-4 space-y-3 flex-1 overflow-y-auto flex flex-col justify-center">
         <ResolvedRow initial="JD" name="John Doe" msg="How much for P6 Math?" />
         <ResolvedRow
           initial="AL"
@@ -437,8 +443,10 @@ const SmartInboxSimulation = () => {
           msg="Where is your location?"
         />
         <ResolvedRow initial="BT" name="Bob Tan" msg="Can reschedule to 5pm?" />
-        <div className="relative group mt-2">
-          <div className="bg-white p-5 rounded-xl border border-orange-200 ring-2 ring-orange-500 shadow-lg flex items-center gap-3 z-10 scale-[1.02] animate-glow-pulse">
+
+        {/* Active Card */}
+        <div className="relative group mt-2 mx-1">
+          <div className="bg-white p-4 md:p-5 rounded-xl border border-orange-200 ring-2 ring-orange-500 shadow-lg flex items-center gap-3 z-10 scale-[1.00] md:scale-[1.02] animate-glow-pulse">
             <div className="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center text-xs font-bold text-orange-600 shrink-0 border border-orange-100">
               SK
             </div>
@@ -454,9 +462,11 @@ const SmartInboxSimulation = () => {
               </div>
             </div>
             <div className="shrink-0">
-              <span className="flex items-center gap-1 text-orange-600 text-[10px] font-bold bg-orange-50 px-3 py-1.5 rounded-full border border-orange-200 shadow-sm">
+              {/* Mobile optimized badge */}
+              <span className="hidden sm:flex items-center gap-1 text-orange-600 text-[10px] font-bold bg-orange-50 px-3 py-1.5 rounded-full border border-orange-200 shadow-sm">
                 <AlertCircle className="w-3 h-3" /> ACTION NEEDED
               </span>
+              <AlertCircle className="w-5 h-5 text-orange-500 sm:hidden" />
             </div>
           </div>
         </div>
@@ -839,9 +849,9 @@ export const StepSection = () => (
 
         {/* --- STEP 3: THE RESULT (UPDATED) --- */}
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <div className="order-2 lg:order-1 relative group">
+          {/* Added px-2 and py-4 to wrapper to prevent glow clipping on mobile */}
+          <div className="order-2 lg:order-1 relative group px-2 py-4 md:p-0">
             <div className="absolute -inset-4 bg-gradient-to-bl from-orange-100 to-amber-100 rounded-[2.5rem] blur-2xl opacity-50 group-hover:opacity-100 transition duration-1000"></div>
-            {/* Using the new Animated Component here */}
             <SmartInboxSimulation />
           </div>
 
